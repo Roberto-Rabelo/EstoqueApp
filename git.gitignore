@@ -1,0 +1,48 @@
+# Arquivos gerados pela IDE
+.idea/
+
+# Arquivos de compilação
+*.class
+*.jar
+
+# Arquivos de configuração local
+config.json
+.env
+
+# Logs e arquivos temporários
+*.log
+tmp/
+
+# Dependências e bibliotecas baixadas
+node_modules/
+vendor/
+
+# Arquivos de mídia
+*.png
+*.jpg
+*.gif
+
+# Arquivos de backup
+*.bak
+*.swp
+
+# Arquivos específicos da linguagem
+# Adicione as extensões de arquivo específicas da linguagem que você está usando
+# Por exemplo, para Python:
+*.pyc
+__pycache__/
+*.pyo
+
+# Arquivos de compilação do Java
+bin/
+target/
+
+# Arquivos gerados pelo Visual Studio
+.vs/
+
+# Arquivos do Eclipse
+.settings/
+
+# Arquivos gerados pelo Xcode
+*.xcworkspace/
+*.xcuserdata/
