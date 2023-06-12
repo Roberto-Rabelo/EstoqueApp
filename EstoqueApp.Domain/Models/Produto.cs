@@ -12,9 +12,9 @@ namespace EstoqueApp.Domain.Models
         #region Propriedades
         public Guid Id { get; set; }
         public string Nome { get; set; }
-        public decimal Preco { get; set; }
-        public int Quantidade { get; set; }
-        public Guid EstoqueId { get; set; }
+        public decimal? Preco { get; set; }
+        public int? Quantidade { get; set; }
+        public Guid? EstoqueId { get; set; }
         #endregion
 
         #region Relacionamentos

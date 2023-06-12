@@ -12,10 +12,11 @@ namespace EstoqueApp.Domain.Models
         public Guid Id { get; set; }
         public string Nome { get; set; }
         public string Descricao { get; set; }
+        //public DateTime? DataHoraCriacao { get; set; }
         #endregion
 
         #region
-         public  ICollection<Produto> Produtos { get; set; }   
+        public  ICollection<Produto> Produtos { get; set; }   
         #endregion
     }
 }

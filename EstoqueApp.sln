@@ -37,6 +37,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EstoqueApp.Infra.Data.SqlSe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EstoqueApp.Infra.Data.MongoDB", "EstoqueApp.Infra.Data.MongoDB\EstoqueApp.Infra.Data.MongoDB.csproj", "{8D5C3615-7382-4368-B727-4A6C3FFB42D9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EstoqueApp.Tests", "EstoqueApp.Tests\EstoqueApp.Tests.csproj", "{983FFCC6-7DB7-4500-9FFA-B4B72DB64AE4}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E9CB9C31-BBB2-4B21-9079-F478CAD921B6} = {E9CB9C31-BBB2-4B21-9079-F478CAD921B6}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +68,10 @@ Global
 		{8D5C3615-7382-4368-B727-4A6C3FFB42D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D5C3615-7382-4368-B727-4A6C3FFB42D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D5C3615-7382-4368-B727-4A6C3FFB42D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{983FFCC6-7DB7-4500-9FFA-B4B72DB64AE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{983FFCC6-7DB7-4500-9FFA-B4B72DB64AE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{983FFCC6-7DB7-4500-9FFA-B4B72DB64AE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{983FFCC6-7DB7-4500-9FFA-B4B72DB64AE4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -76,6 +85,7 @@ Global
 		{A703B341-AF21-4805-ABE0-0A9CFCE95D31} = {B2622C2B-2969-40EC-8F9C-81310D618BAC}
 		{2E2F8458-A2D2-4771-B1B6-BF7FE2B8E33B} = {8A315291-B8DC-4F74-8328-29B2EF44A0A6}
 		{8D5C3615-7382-4368-B727-4A6C3FFB42D9} = {8A315291-B8DC-4F74-8328-29B2EF44A0A6}
+		{983FFCC6-7DB7-4500-9FFA-B4B72DB64AE4} = {D235D315-FE93-4A28-938E-3A63EBA7627E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {33667FBD-FFBF-4568-9F00-8BF1915B5F71}

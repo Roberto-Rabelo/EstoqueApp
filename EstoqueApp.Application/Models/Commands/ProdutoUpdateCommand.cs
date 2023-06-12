@@ -24,6 +24,7 @@ namespace EstoqueApp.Application.Models.Commands
 
         [Required(ErrorMessage = "Campo obrigatório.")]
         public int? Quantidade { get; set; }
+        public Guid? EstoqueId { get; set; }
 
     }
 }

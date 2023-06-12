@@ -1,4 +1,5 @@
-﻿using EstoqueApp.Application.Models.Commands;
+﻿using AutoMapper;
+using EstoqueApp.Application.Models.Commands;
 using EstoqueApp.Application.Models.Queries;
 using EstoqueApp.Application.Notifications;
 using EstoqueApp.Domain.Interfaces.Services;
@@ -13,30 +14,22 @@ namespace EstoqueApp.Application.Handlers.Requests
         IRequestHandler<EstoqueDeleteCommand, EstoqueQuery>
         {
         private readonly IMediator _mediator;
+        private readonly IMapper? _mapper;
         private readonly IEstoqueDomainService _estoqueDomainService;
 
-        public EstoqueRequestHandler(IMediator mediator,IEstoqueDomainService estoqueDomainService)
+        public EstoqueRequestHandler(IMediator mediator,IMapper? mapper,IEstoqueDomainService estoqueDomainService)
         {
                 _mediator = mediator;
+            _mapper = mapper;
             _estoqueDomainService = estoqueDomainService;
         }
         public async Task<EstoqueQuery> Handle(EstoqueCreateCommand request, CancellationToken cancellationToken)
         {
-            var estoque = new Estoque
-            {
-                Id = Guid.NewGuid(),
-                Nome = request.Nome,
-                Descricao = request.Descricao
-            };
+            var estoque = _mapper.Map<Estoque>(request);
 
             _estoqueDomainService.Add(estoque);
 
-            var estoqueQuery = new EstoqueQuery
-            {
-                Id = estoque.Id,
-                Nome = estoque.Nome,
-                Descricao = estoque.Descricao
-            };
+            var estoqueQuery = _mapper.Map<EstoqueQuery>(estoque);
 
             await _mediator.Publish(
                     new EstoqueNotification
@@ -53,28 +46,40 @@ namespace EstoqueApp.Application.Handlers.Requests
 
         public async Task<EstoqueQuery> Handle(EstoqueUpdateCommand request, CancellationToken cancellationToken)
             {
-            var estoqueQuery = new EstoqueQuery();
+            var estoque = _estoqueDomainService.GetById(request.Id.Value);
+            estoque.Nome = request.Nome;
+            estoque.Descricao = request.Descricao;
+
+            _estoqueDomainService.Update(estoque);
+
+            var estoqueQuery = _mapper.Map<EstoqueQuery>(estoque);
             await _mediator.Publish(
-            new EstoqueNotification
-            {
-                Action = ActionNotification.Update,
-                Estoque = estoqueQuery
-            }
-        );
+                    new EstoqueNotification
+                    {
+                        Action = ActionNotification.Update,
+                        Estoque = estoqueQuery
+                    }
+                );
+
+
 
             return estoqueQuery;
         }
 
             public async Task<EstoqueQuery> Handle(EstoqueDeleteCommand request, CancellationToken cancellationToken)
             {
-            var estoqueQuery = new EstoqueQuery();
+            var estoque = _estoqueDomainService.GetById(request.Id.Value);
+            _estoqueDomainService.Delete(estoque);
+
+            var estoqueQuery = _mapper.Map<EstoqueQuery>(estoque);
             await _mediator.Publish(
-            new EstoqueNotification
-            {
-                Action = ActionNotification.Delete,
-                Estoque = estoqueQuery
-            }
-        );
+                    new EstoqueNotification
+                    {
+                        Action = ActionNotification.Delete,
+                        Estoque = estoqueQuery
+                    }
+                );
+
 
             return estoqueQuery;
         }
